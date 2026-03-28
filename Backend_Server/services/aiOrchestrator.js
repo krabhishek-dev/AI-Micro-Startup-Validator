@@ -8,7 +8,7 @@ import { calculateScore } from "../utils/score.util.js";
 
 export const runFullAnalysis = async (data) => {
   try {
-    // 🔥 Parallel Execution
+    // Parallel Execution
     const [
       general,
       market,
