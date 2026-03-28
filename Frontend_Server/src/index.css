@@ -1,14 +1,29 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  
+  /* Minimalist Palette */
+  --color-brand: #171717;
+  --color-brand-hover: #262626;
+  --color-surface: #FFFFFF;
+  --color-surface-subtle: #F9F9F9;
+  --color-surface-border: #E5E5E5;
+}
+
 body {
-  background: #0f0f0f;
-  font-family: 'Poppins', sans-serif;
+  background-color: var(--color-surface);
+  color: var(--color-brand);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Smooth scroll */
-html {
-  scroll-behavior: smooth;
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
-
-/* Glow effect */
-.glow {
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

@@ -1,47 +1,31 @@
-//SWOTCard.jsx 
+import React from 'react';
+import Card from './card';
 
-const SWOTCard = ({ swot }) => {
-  return (
-    <div className="grid grid-cols-2 gap-4 text-white mt-6">
+const SWOTCard = ({ section, items }) => {
+    const getColorTheme = (type) => {
+        switch(type) {
+            case 'Strengths': return 'text-brand';
+            case 'Weaknesses': return 'text-neutral-500';
+            case 'Opportunities': return 'text-brand';
+            case 'Threats': return 'text-neutral-500';
+            default: return 'text-brand';
+        }
+    };
 
-      <div className="bg-green-500/20 p-4 rounded-xl">
-        <h3 className="font-bold mb-2">Strengths</h3>
-        <ul>
-          {swot.strengths.map((item, i) => (
-            <li key={i}>• {item}</li>
-          ))}
-        </ul>
-      </div>
-
-      <div className="bg-red-500/20 p-4 rounded-xl">
-        <h3 className="font-bold mb-2">Weaknesses</h3>
-        <ul>
-          {swot.weaknesses.map((item, i) => (
-            <li key={i}>• {item}</li>
-          ))}
-        </ul>
-      </div>
-
-      <div className="bg-blue-500/20 p-4 rounded-xl">
-        <h3 className="font-bold mb-2">Opportunities</h3>
-        <ul>
-          {swot.opportunities.map((item, i) => (
-            <li key={i}>• {item}</li>
-          ))}
-        </ul>
-      </div>
-
-      <div className="bg-yellow-500/20 p-4 rounded-xl">
-        <h3 className="font-bold mb-2">Threats</h3>
-        <ul>
-          {swot.threats.map((item, i) => (
-            <li key={i}>• {item}</li>
-          ))}
-        </ul>
-      </div>
-
-    </div>
-  );
+    return (
+        <Card>
+            <h4 className={`text-sm font-semibold mb-3 uppercase tracking-wider ${getColorTheme(section)}`}>
+                {section}
+            </h4>
+            <ul className="space-y-2">
+                {items.map((item, idx) => (
+                    <li key={idx} className="flex gap-2 text-sm text-neutral-600 border-l-2 border-surface-border pl-3 ml-1">
+                        {item}
+                    </li>
+                ))}
+            </ul>
+        </Card>
+    );
 };
 
 export default SWOTCard;

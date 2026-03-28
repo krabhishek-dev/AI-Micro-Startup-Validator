@@ -1,23 +1,28 @@
+import React from 'react';
+import Card from './card';
 
-
-const AnalysisCard = ({ title, content, score }) => {
-  return (
-    <div className="bg-white/10 backdrop-blur-md p-5 rounded-2xl shadow-lg text-white border border-white/20 hover:scale-105 transition">
-      
-      <div className="flex justify-between items-center mb-3">
-        <h3 className="text-xl font-semibold">{title}</h3>
-        {score !== undefined && (
-          <span className="bg-blue-500 px-3 py-1 rounded-full text-sm">
-            {score}/10
-          </span>
-        )}
-      </div>
-
-      <p className="text-gray-300">{content}</p>
-
-    </div>
-  );
+const AnalysisCard = ({ title, content, icon: Icon }) => {
+    return (
+        <Card>
+            <div className="flex items-start gap-4">
+                {Icon && (
+                    <div className="p-2 bg-surface-subtle border border-surface-border rounded-lg shrink-0 mt-0.5">
+                        <Icon size={18} className="text-neutral-700" />
+                    </div>
+                )}
+                <div className="flex-1">
+                    <h3 className="text-sm font-semibold text-brand mb-1.5 uppercase tracking-wide">{title}</h3>
+                    <div className="text-sm text-neutral-600 leading-relaxed">
+                        {typeof content === 'string' ? (
+                            <p>{content}</p>
+                        ) : (
+                            content
+                        )}
+                    </div>
+                </div>
+            </div>
+        </Card>
+    );
 };
 
- 
 export default AnalysisCard;
